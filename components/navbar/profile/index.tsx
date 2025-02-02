@@ -1,9 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { GoogleLogin } from "@react-oauth/google"
 
 export default function Profile() {
     const isLoggedIn = true;
+    const onSuccess = (res: { credentials: string }) => {
+
+    }
     return (
         <>
             {isLoggedIn ? (
@@ -21,7 +25,7 @@ export default function Profile() {
                     </div>
                 </div>
             ) : (
-                <div></div>
+                <GoogleLogin onSuccess={res => onSuccess(res)} />
             )}
         </>
     );
