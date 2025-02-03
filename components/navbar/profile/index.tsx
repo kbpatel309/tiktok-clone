@@ -1,12 +1,15 @@
+"use client"
 import React from 'react'
 import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { GoogleLogin } from "@react-oauth/google"
+import { auth } from "@/services/auth"
 
 export default function Profile() {
-    const isLoggedIn = true;
-    const onSuccess = (res: { credentials: string }) => {
-
+    const isLoggedIn = false;
+    const onSuccess = async (res: { credential?: string }) => {
+        if (!res.credential) return
+        await auth(res.credential)
     }
     return (
         <>
@@ -25,7 +28,7 @@ export default function Profile() {
                     </div>
                 </div>
             ) : (
-                <GoogleLogin onSuccess={res => onSuccess(res)} />
+                <GoogleLogin onSuccess={res => onSuccess(res)} onError={() => console.error("Error. Try again.")}/>
             )}
         </>
     );
