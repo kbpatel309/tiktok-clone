@@ -1,15 +1,16 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { GoogleLogin } from "@react-oauth/google"
 import { auth } from "@/services/auth"
 
 export default function Profile() {
-    const isLoggedIn = false;
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const onSuccess = async (res: { credential?: string }) => {
         if (!res.credential) return
         await auth(res.credential)
+        setIsLoggedIn(true)
     }
     return (
         <>
