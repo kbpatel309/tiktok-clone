@@ -5,7 +5,7 @@ export type Decoded = {
     email: string;
     name: string;
     picture: string;
-    sub: string;
+    sub: string; // id
 }
 
 export async function auth(credential: string){
