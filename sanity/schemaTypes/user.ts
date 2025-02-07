@@ -1,5 +1,6 @@
 import { defineType } from "sanity";
 
 export const userType = defineType({
-    title: ""
+    title: "User",
+    name: "user",
 })
