@@ -15,6 +15,7 @@ export const userType = defineType({
             name: "name",
             type: "string"
         }),
+        // rewatch video for this section
         defineField({
             title: "Picture URL",
             name: "picture_url",
