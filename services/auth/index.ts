@@ -11,9 +11,7 @@ export type Decoded = {
 export async function auth(credential: string){
     const decoded = jwt.decode(credential)
     if(!decoded) return
-    createUser(decoded)
-    // create user
-        // create user only if it doesn't exist
-        // if user exists, don't create it
+    const user = await createUser(decoded as Decoded)
+    if(!user) return
     // create token
 }

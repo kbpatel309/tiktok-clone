@@ -9,5 +9,6 @@ export async function createUser(decodedUser: Decoded) {
         email: decodedUser.email,
         picture_url: decodedUser.picture
     }
-    await sanity.createIfNotExists(doc)
+    const user = await sanity.createIfNotExists(doc)
+    return user as User
 }
