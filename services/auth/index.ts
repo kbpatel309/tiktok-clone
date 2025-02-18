@@ -13,5 +13,5 @@ export async function auth(credential: string){
     if(!decoded) return
     const user = await createUser(decoded as Decoded)
     if(!user) return
-    // create token
+    // create tokens
 }
