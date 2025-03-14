@@ -20,6 +20,6 @@ export async function auth(credential: string){
     // create a token
     const token = jwt.sign({ _id: user._id }, privateKey, { expiresIn: "30d" })
     const maxAge = 60 * 60 * 60 * 24 * 30 // 30 days
-    cookies().set({ name: "auth_token", value: token, maxAge })
+    cookies().set({ name: "auth_token", value: token, maxAge }) // check why set has red line under it
     return user
 }
